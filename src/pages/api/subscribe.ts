@@ -1,3 +1,5 @@
+ /* eslint-disable */ 
+// eslint-disable-next-line
 
 import { NextApiRequest, NextApiResponse } from "next";
 import { stripe } from "../../services/stripe";
@@ -18,8 +20,7 @@ import { fauna } from "../../services/fauna";
 export default async (req: NextApiRequest, res: NextApiResponse) => {
     if (req.method === 'POST') {
         const session = await getSession({ req })
-
-        
+ 
 
         const user = await fauna.query<User>(
             q.Get(
@@ -44,10 +45,13 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
             {
                 data: {
                     stripe_customer_id: stripeCustomer.id,
+                    }
                 }
-            }
             )
         )
+
+        customerId = stripeCustomer.id
+    }
 
         const stripeCheckoutSession = await stripe.checkout.sessions.create({
             customer: customerId,
@@ -68,5 +72,4 @@ export default async (req: NextApiRequest, res: NextApiResponse) => {
         res.status(405).end('Method not allowed')
     }
 
-}
 }
