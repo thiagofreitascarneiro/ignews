@@ -1,4 +1,8 @@
 
+ /* eslint-disable */ 
+// eslint-disable-next-line
+
+
 import Head from 'next/head'
 import { SubscribeButton } from '../components/SubscribeButton';
 
@@ -38,7 +42,6 @@ export default function Home({ product }) {
     </>
   )
 }
-
 
 export const getStaticProps: GetStaticProps = async () => {
   const price = await stripe.prices.retrieve('price_1K7qOyKYaULAQNBFCIEA36WG', {
