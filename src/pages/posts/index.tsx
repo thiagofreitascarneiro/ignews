@@ -15,8 +15,6 @@ type Post = {
     title: string;
     excerpt: string;
     updatedAt: string;
-
-
 }
 interface PostsProps {
    posts: Post[]
