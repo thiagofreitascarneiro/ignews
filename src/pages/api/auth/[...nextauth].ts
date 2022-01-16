@@ -38,12 +38,12 @@ export default NextAuth({
                )
              ),
              q.Match(
-               q.Index('subscription_bt_status'),
+               q.Index('subscription_by_status'),
                "active"
              )
            ])
-           )
           )
+        )
    
           return {
             ...session,
@@ -61,7 +61,7 @@ export default NextAuth({
       const { email } = user
 
     try {
-      const userexists = // query
+      //const userexists = // query
 
       await fauna.query(
        q.If(
