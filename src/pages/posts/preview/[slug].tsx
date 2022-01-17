@@ -1,6 +1,8 @@
 import { GetStaticProps } from "next";
 import { getSession } from "next-auth/react";
+import Link from "next/dist/client/link";
 import Head  from "next/head";
+
 import { RichText } from "prismic-dom";
 
 import { getPrismicClient } from "../../../services/prismic";
@@ -30,9 +32,16 @@ export default function PostPreview({ post }: PostPreviewProps){
                       <h1>{post.title}</h1>  
                       <time>{post.updatedAt}</time>
                       <div 
-                        className={styles.postContent}
+                        className={`${styles.postContent} ${styles.previewContent}`}
                         dangerouslySetInnerHTML={{ __html: post.content}} 
                       />
+
+                      <div className={styles.continueReading}> 
+                            Wanna continue reading ?
+                        <Link href="/">
+                            <a href=""> Subscribe now 🤗</a>
+                        </Link>
+                      </div>
                 </article>
             </main>       
         </>
@@ -53,11 +62,12 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     const prismic = getPrismicClient()
 
     const response = await prismic.getByUID<any>('post', String(slug), {})
+    
 
     const post = {
         slug,
         title: RichText.asText(response.data.title),
-        content: RichText.asHtml(response.data.content),
+        content: RichText.asHtml(response.data.content.splice(0, 3)),
         updatedAt: new Date(response.last_publication_date).toLocaleDateString('pt-BR', {
             day: '2-digit',
             month: 'long',
