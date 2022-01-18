@@ -47,7 +47,7 @@ Essa é uma aplicação Serverless, ou seja, todo o processo que dependeria de u
 As postagens são feitas pelo painel do Prismic CMS e integradas diretamente pelo front.
 
 
-###🧪 Tecnologias ##
+## 🧪 Tecnologias ##
 
 As seguintes tecnologias foram utilizadas no projeto:
 
@@ -79,6 +79,5 @@ $ yarn dev
 <h1 align="center">
     <img alt = "Web app" src = "./.github/image-01.png" width = "500px" />
     <img alt = "Web app" src = "./.github/image-04.png" width = "500px" />
-    <img alt = "Web app" src = "./.github/image-05.png" width = "500px" />
-    <img alt = "Web app" src = "./.github/image-03.png" width = "500px" />
 </h1>
+
