@@ -10,5 +10,5 @@ module.exports = {
         "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest"
     },
     // identifica o ambiente de teste, 
-    testEnvironment: 'jsdom'
+    testEnvironment: '@testing-library/jest-dom'
 };
