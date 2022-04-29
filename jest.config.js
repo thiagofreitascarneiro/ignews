@@ -9,9 +9,9 @@ module.exports = {
     transform: {
         "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest"
     },
-
+    // Biblioteca identity para entender arquivos css-modules
     moduleNameMapper: {
-        "\\.(scss|css|sass)$": "identty-obj-proxy"
+        "\\.(scss|css|sass)$": "identity-obj-proxy"
     },
     // identifica o ambiente de teste, 
     testEnvironment: 'jsdom'

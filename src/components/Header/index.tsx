@@ -22,6 +22,8 @@ export function Header() {
                         <a>Posts</a>
                    </ActiveLink>
                </nav>
+
+               
                <SignInButton />
             </div>
         </header>
