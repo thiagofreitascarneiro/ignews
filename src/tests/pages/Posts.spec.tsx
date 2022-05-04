@@ -59,7 +59,7 @@ describe('Posts page', () => {
                             slug: 'fake-slug',
                             title: 'Fake title 1',
                             excerpt: 'Fake excerpt 1',
-                            updated_at: '01 de janeiro de 2020',
+                            updatedAt: '01 de janeiro de 2020',
                         }
                     ]
                 }
