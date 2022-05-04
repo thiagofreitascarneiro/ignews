@@ -28,24 +28,28 @@ describe('Posts page', () => {
         const getPrismicClientMocked = mocked(getPrismicClient);
 
         getPrismicClientMocked.mockReturnValueOnce({
-            getAllByType: jest.fn().mockResolvedValueOnce(
-                [
-                    {
-                        uid: 'fake-slug',
-                        data: {
-                            title: 'Fake title 1',
-                            content: [
-                                {
-                                    type: 'paragraph',
-                                    text: 'Fake excerpt 1',
-                                },
-                            ],
-                        },
-                        last_publication_date: '2020-01-01',
-                    },
-                ],
-            ),
-        } as any);
+            query: jest.fn().mockResolvedValueOnce({
+              results: [
+                {
+                  uid: 'fake-slug',
+                  data: {
+                    title: [
+                      {
+                        type: 'heading', text: 'Fake title 1'
+                      }
+                    ],
+                    content: [
+                      {
+                        type: 'paragraph',
+                        text: 'Fake excerpt 1',
+                      },
+                    ],
+                  },
+                  last_publication_date: '01-01-2020',
+                },
+              ],
+            }),
+          } as any);
 
         const response = await getStaticProps({
             previewData: undefined,
