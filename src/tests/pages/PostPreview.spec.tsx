@@ -36,28 +36,28 @@ describe('Post preview page', () => {
         expect(screen.getByText('Wanna continue reading ?')).toBeInTheDocument();
     });
 
-    it('redirects user to full post when user is subscribed', async () => {
+    it("redirects user to full post when user is subscribed", async () => {
         const useSessionMocked = mocked(useSession);
         const useRouterMocked = mocked(useRouter);
-
-        useSessionMocked.mockReturnValueOnce([ 
-            {
-              activeSubscription: 'fake-active-subscription'
-            },
-            false
-         ] as any);
-
         const pushMock = jest.fn()
-
+    
+        useSessionMocked.mockReturnValueOnce({
+            data: {
+                activeSubscription: 'fake-active-subscription',
+                expires: null
+            },
+            status: 'authenticated'
+        });
+    
         useRouterMocked.mockReturnValueOnce({
-            push: pushMock,
-        } as any);
-
-        render(<PostPreview post={post} />);
-
+          push: pushMock,
+        } as any)
+    
+        render(<Post post={post} />);
+    
         expect(pushMock).toHaveBeenCalledWith('/posts/my-new-post')
-    });
-
+      });
+      
     it('loads initial data', async () => {
         const getPrismicClientMocked = mocked(getPrismicClient);
 

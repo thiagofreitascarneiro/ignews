@@ -14,5 +14,14 @@ module.exports = {
         "\\.(scss|css|sass)$": "identity-obj-proxy"
     },
     // identifica o ambiente de teste, 
-    testEnvironment: 'jsdom'
+    testEnvironment: 'jsdom',
+
+    //
+    collectCoverage: true,
+    collectCoverageFrom: [
+          "**/*.{js,jsx}",
+          "!src/**/*.spec.tsx"
+    ],
+    coverageReporters: ["lcov", "json"]
+    
 };
